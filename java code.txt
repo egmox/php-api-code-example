@@ -1,0 +1,14 @@
+    HttpPost httppost = new HttpPost(your_url);
+    JSONObject jsonobj = new JSONObject();
+    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+    try {
+        jsonobj.put("put_key", "put_value");
+        jsonobj.put("put_key", "put_value");
+        jsonobj.put("put_key", "put_value");
+        nameValuePairs.add(new BasicNameValuePair("name_of_php_variable", jsonobj.toString()));
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));//preparing json data
+
+/*when we execute or hit the php api,the php page can respond.
+So we are catching that response in 'httpResponse'*/
+        HttpResponse response = new DefaultHttpClient().execute(httppost);
+    }catch(Exception e){}//not connected
